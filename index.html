@@ -507,12 +507,12 @@
    *  DEVELOPER: Change this URL to wherever you host
    *             employee_profile.html on your server.
    *
-   *  Example: 'https://yourdomain.com/kishor-kanara-profile.html'
+   *  Example: 'https://news24-idcard.vercel.app//employee_profile.html'
    *
    *  For local testing, use: 'employee_profile.html'
    * ──────────────────────────────────────────────────────────────
    */
-  const QR_TARGET_URL = 'employee_profile.html';
+  const QR_TARGET_URL = 'https://news24-idcard.vercel.app//employee_profile.html';
 
   new QRCode(document.getElementById('qrcode'), {
     text: QR_TARGET_URL,
