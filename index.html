@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TN News 24 - ID Card Back</title>
+  <style>
+    /* ── Page setup for printing ── */
+    @page {
+      size: 85.6mm 135mm;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans Devanagari', 'Mangal', Arial, sans-serif;
+      background: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* ── Print: hide background, show only card ── */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        display: block;
+      }
+      .page-wrapper {
+        display: block;
+      }
+      .card {
+        box-shadow: none;
+        border-radius: 0;
+        width: 85.6mm;
+        height: 135mm;
+        page-break-after: avoid;
+      }
+      .print-hint {
+        display: none;
+      }
+    }
+
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .print-hint {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      text-align: center;
+    }
+    .print-hint kbd {
+      background: #fff;
+      color: #1a1a2e;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    /* ── ID Card ── */
+    .card {
+      width: 85.6mm;
+      height: 135mm;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* ── Top clip area ── */
+    .clip-area {
+      background: #f0f0f0;
+      height: 10mm;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 1mm;
+      border-bottom: 1px solid #ddd;
+    }
+    .clip-hole {
+      width: 8mm;
+      height: 4mm;
+      background: #cccccc;
+      border-radius: 3px 3px 0 0;
+    }
+
+    /* ── Logo Header ── */
+    /*.header {
+      background: linear-gradient(to right, #1a237e 38%, #c62828 38%);
+      padding: 0;
+      display: flex;
+      align-items: stretch;
+      height: 18mm;
+    }*/
+
+   /* .header-left {
+      background: linear-gradient(135deg, #1565C0, #0D47A1);
+      width: 38%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2mm;
+    }
+
+    .tn-logo {
+      font-family: Impact, 'Arial Black', sans-serif;
+      font-size: 9mm;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .tn-logo .t { color: #FFD600; }
+    .tn-logo .n { color: #FFD600; }
+    .tn-logo-sub {
+      font-family: Arial, sans-serif;
+      font-size: 2mm;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 1px;
+      text-align: center;
+      margin-top: 0.5mm;
+    }
+
+    .header-right {
+      background: #c62828;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1mm 2mm;
+    }*/
+
+.card-top-bar{
+    background:#f5a800;
+    height:55px;
+    position:relative;
+}
+
+.news24-logo-front{
+    position:absolute;
+    left:50%;
+    bottom:-35px;
+    transform:translateX(-50%);
+    z-index:100;
+}
+
+.logo-box{
+    background:white;
+    padding:0;
+}
+
+.logo-box img{
+    height:72px;
+    width:auto;
+    display:block;
+}
+
+
+    .news-hindi {
+      font-family: 'Noto Sans Devanagari', 'Mangal', Arial, sans-serif;
+      font-size: 7mm;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: 0.5px;
+    }
+
+    .number-24 {
+      font-family: Impact, 'Arial Black', Arial, sans-serif;
+      font-size: 10mm;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .tagline {
+      font-size: 2.2mm;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.3px;
+    }
+
+    .header-right-inner {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+    }
+
+    /* ── Instructions Section ── */
+    .instructions {
+      padding: 3mm 4mm 2mm;
+      flex: 1;
+    }
+
+    .instructions-title {
+      text-align: center;
+      font-size: 3mm;
+      font-weight: bold;
+      color: #c62828;
+      margin-bottom: 2mm;
+    }
+
+    .instruction-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .instruction-list li {
+      font-size: 4.5mm;
+      color: ##18408b;
+      line-height: 1.5;
+      margin-bottom: 1.5mm;
+      display: flex;
+      gap: 1mm;
+    }
+
+    .instruction-list li .num {
+      color: #18408b;
+      font-weight: bold;
+      min-width: 5mm;
+      flex-shrink: 0;
+    }
+
+    .note-line {
+      font-size: 4.5mm;
+      color: #18408b;
+      margin-top: 2mm;
+      line-height: 1.5;
+    }
+
+    .contact-number {
+      font-size: 3.5mm;
+      font-weight: bold;
+      color: #c62828;
+      margin-top: 1mm;
+    }
+
+/* ── GOLD STRIPE ── */
+  .gold-stripe { height: 5px; background: #e8a000; }
+
+  /* ── QR SECTION ── */
+  .qr-section {
+    background: #fff;
+    padding: 15px 13px 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+  }
+
+  /* watermark 
+  .qr-section::before {
+    content: 'NEWS 24';
+    position: absolute;
+    font-size: 44px;
+    font-weight: 900;
+    color: rgba(26,58,140,0.04);
+    top: 50%;
+    left: 68%;
+    transform: translate(-50%,-50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }*/
+
+  .scan-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #1a3a8c;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+
+/* QR frame */
+  .qr-frame {
+    width: 150px;
+    height: 150px;
+    border: 3px solid #1a3a8c;
+    border-radius: 10px;
+    padding: 8px;
+    background: #fff;
+    display: flex;
+    align-items: right;
+    justify-content: center;
+    position: relative;
+    left: 15mm;
+       }
+
+  /* Corner accents */
+  .qr-frame::before, .qr-frame::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: #e8a000;
+    border-style: solid;
+  }
+
+  .qr-frame::before { top: 3px; left: 3px; border-width: 3px 0 0 3px; border-radius: 3px 0 0 0; }
+  .qr-frame::after  { bottom: 3px; right: 3px; border-width: 0 3px 3px 0; border-radius: 0 0 3px 0; }
+
+  #qrcode {
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #qrcode canvas, #qrcode img {
+    width: 130px !important;
+    height: 130px !important;
+  }
+
+
+
+    /* ── Stamp & Signature ── */
+    .stamp-area {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 1mm 5mm 2mm;
+    }
+
+    .stamp {
+      width: 18mm;
+      height: 18mm;
+      border: 2px solid #3949AB;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .stamp-inner {
+      font-size: 1.8mm;
+      color: #3949AB;
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .stamp-logo-text {
+      font-size: 2.5mm;
+      font-weight: 900;
+      color: #3949AB;
+    }
+    .signature-block {
+      position: absolute;
+      right: 6mm;
+      bottom: 2mm;
+    }
+    .signature-text {
+      font-family: 'Dancing Script', cursive, Arial;
+      font-size: 3.5mm;
+      color: #1a1a1a;
+      font-style: italic;
+    }
+    .sign-title {
+      font-size: 1.8mm;
+      color: #555;
+      text-align: right;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: #c62828;
+      padding: 2mm 3mm;
+    }
+
+    .footer-address {
+      font-size: 2.2mm;
+      color: #fff;
+      text-align: center;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .footer-contact {
+      font-size: 2mm;
+      color: rgba(255,255,255,0.92);
+      text-align: center;
+      margin-top: 1mm;
+    }
+
+    .footer-web {
+      display: flex;
+      justify-content: center;
+      gap: 4mm;
+      margin-top: 1.5mm;
+      align-items: center;
+    }
+
+    .footer-web-item {
+      font-size: 2mm;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.8mm;
+    }
+
+    .footer-web-item .icon {
+      font-size: 2.5mm;
+    }
+  </style>
+  <!-- Google Font for Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!--<div class="print-hint">
+    Print karne ke liye: <kbd>Ctrl + P</kbd> &nbsp;|&nbsp; 
+    Page size: <strong>85.6 × 135 mm</strong> &nbsp;|&nbsp; 
+    Margins: <strong>None / Zero</strong> &nbsp;|&nbsp;
+    Scale: <strong>100%</strong>
+  </div>-->
+
+  <!-- ════ ID CARD ════ -->
+  <div class="card">
+
+    <!-- Clip hole at top 
+    <div class="clip-area">
+      <div class="clip-hole"></div>
+    </div>-->
+
+    <!-- Logo Header 
+    <div class="header">
+      <div class="header-left">
+        <div>
+          <div class="tn-logo"><span class="t">T</span><span class="n">N</span></div>
+          <div class="tn-logo-sub">NEWS</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="header-right-inner">
+          <div class="news-hindi">न्यूज</div>
+          <div class="number-24">24</div>
+        </div>
+        <div class="tagline">आपका जुर्म के खिलाफ</div>
+      </div>
+    </div>-->
+
+<div class="card-top-bar">
+        <div class="news24-logo-front">
+            <div class="logo-box">
+                <img src="News24_logo.jpeg">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Instructions -->
+    <div class="instructions">
+      <div class="instructions-title" style="padding-top:30px; color:#18408b; font-size:16px">*आवश्यक निर्देश*</div>
+      <ul class="instruction-list">
+               <li><span class="num">1:</span><span>कार्ड का दुरुपयोग करना कानूनन अपराध है ।</span></li>
+        <li><span class="num">2:</span><span>बिना आईडी कार्ड के किसी भी घटना स्थल पर कवरेज ना करें ।</span></li>
+        <li><span class="num">3:</span><span>आईडी कार्ड के खो जाने पर नजदीकी पुलिस स्टेशन एवं संस्था कार्यालय में सूचित करें ।</span></li>
+              </ul>
+          </div>
+
+    <!-- Stamp area 
+    <div class="stamp-area" style="position:relative; height:22mm;">
+      <div class="stamp" style="position:absolute; right:4mm; top:0;">
+        <div class="stamp-inner">
+          <div class="stamp-logo-text">TN NEWS</div>
+          <div style="font-size:1.6mm;">24</div>
+          <div style="font-size:1.5mm; margin-top:1px;">Saharanpur</div>
+          <div style="font-size:1.3mm;">Bureau</div>
+        </div>
+      </div>-->
+  <!-- QR -->
+    <div class="qr-section">
+     <!-- <div class="scan-label">Scan to View Profile</div>-->
+      <div class="qr-frame">
+        <div id="qrcode"></div>
+      </div>
+    <!--  <div class="scan-hint">Scan with any camera app</div>-->
+    </div>
+
+<!-- QR CODE LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  /*
+   * ──────────────────────────────────────────────────────────────
+   *  DEVELOPER: Change this URL to wherever you host
+   *             employee_profile.html on your server.
+   *
+   *  Example: 'https://yourdomain.com/kishor-kanara-profile.html'
+   *
+   *  For local testing, use: 'employee_profile.html'
+   * ──────────────────────────────────────────────────────────────
+   */
+  const QR_TARGET_URL = 'employee_profile.html';
+
+  new QRCode(document.getElementById('qrcode'), {
+    text: QR_TARGET_URL,
+    width: 130,
+    height: 130,
+    colorDark: '#000000',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H   // High error correction — survives logo overlay
+  });
+</script>
+
+     <!-- <div style="position:absolute; right:22mm; bottom:2mm;">
+        <div style="font-family: cursive; font-size:3.5mm; color:#111; font-style:italic;">Authorized Signatory</div>
+        <div style="font-size:1.8mm; color:#555; text-align:right;">Bureau Head</div>
+      </div>
+    </div>-->
+
+    <!-- Footer -->
+    <div class="footer" style="background-color:#18408b">
+      <div class="footer-address">
+        <div style="font-family:Bahnschrift;font-size:13px">
+                FC-23, Sec-16A,
+                Film City Noida UP-201301
+            </div>
+
+   <!--   <div class="footer-contact">
+        <strong>संपर्क सूत्र:-</strong> 88995 99945, 82182 75938, 7500267629
+      </div>-->
+      <div class="footer-web" style="style="font-family:Bahnschrift;font-size:13px"">
+        <div class="footer-web-item" style="font-family:Bahnschrift;font-size:11px">
+          <span class="icon">✉</span>
+          <span>Chandan@bagconvergence.in</span>
+        </div>
+        <div class="footer-web-item" style="font-family:Bahnschrift;font-size:11px">
+          <span class="icon">🌐</span>
+          <span>www.news24online.com</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /card -->
+
+</div><!-- /page-wrapper -->
+
+</body>
+</html>

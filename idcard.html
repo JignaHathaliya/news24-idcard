@@ -1,0 +1,223 @@
+<html>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Oswald:wght@600;700&display=swap');
+
+
+.id-card{
+    width:270px;
+    min-height:380px;
+    border:4px solid #0000;
+    border-radius:8px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+}
+
+.card-front{
+    background:#fff;
+}
+
+.card-top-bar{
+    background:#f5a800;
+    height:51px;
+    position:relative;
+}
+
+.news24-logo-front{
+    position:absolute;
+    left:50%;
+    bottom:-28px;
+    transform:translateX(-50%);
+    z-index:100;
+}
+
+.logo-box{
+    background:white;
+    padding:0;
+}
+
+.logo-box img{
+    height:72px;
+    width:auto;
+    display:block;
+}
+
+.photo-section{
+    background:#fff;
+    padding-top:45px;
+    padding-bottom:5px;
+    margin-top:-11px;
+    display:flex;
+    justify-content:center;
+}
+
+.photo-frame{
+    width:95px;
+    height:115px;
+    overflow:hidden;
+     border-radius: 10px;
+     border: 1px solid black;
+   
+}  
+
+.photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+    transform:scale(1.15);
+    display:block;
+}
+.photo-frame::before{
+    content:"";
+    position:absolute;
+    left:-16px;
+    top:18px;
+    width:16px;
+    height:65px;
+     background: #e8e8e8;
+    border-radius:5px 0 0 5px;
+}
+
+.photo-frame::after{
+    content:"";
+    position:absolute;
+    right:-16px;
+    top:18px;
+    width:16px;
+    height:65px;
+    background: #e8e8e8;
+    border-radius:0 5px 5px 0;
+}
+
+.name-section{
+    background:#fff;
+    text-align:center;
+    padding:6px 5px;
+}
+
+.person-name{
+    font-size:18px;
+    font-weight:bold;
+    color:#000;
+    margin:0;
+     }
+
+.person-designation{
+    font-size:10px;
+    color:#000;
+    margin-top:2px;
+}
+
+.details-section{
+    background:#fff;
+    text-align:center;
+}
+
+.detail-row{
+    display:block;
+    border:none;
+    padding:1px 0;
+}
+
+.detail-label{
+    font-size:9px;
+    color:#444;
+    font-weight:bold;
+}
+
+.detail-value{
+    font-size:9px;
+    color:#000;
+}
+
+.card-bottom-press{
+    background:#18408b;
+    height:70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.press-text-big{
+    color:#fff;
+    font-size:75px;
+    font-weight:800;
+    letter-spacing:0px;
+    font-family: Arial, sans-serif;
+    border:none;
+}
+
+.emp-extra {
+  font-family: Bahnschrift;
+  font-size: 12px;
+  font-weight: 400;
+  color: #111111;
+  margin-bottom: 6px;
+  margin-top:-15px;
+  text-align:center;
+  padding: 0 10px;
+}
+
+</style>
+<div class="id-card card-front">
+
+    <div class="card-top-bar">
+        <div class="news24-logo-front">
+            <div class="logo-box">
+                <img src="News24_logo.jpeg">
+            </div>
+        </div>
+    </div>
+
+    <div class="photo-section">
+        <div class="photo-frame">
+            <img src="Kishor_kanara_photo.jpg">
+                 alt="Kishor Kanara"
+                 id="personPhoto">
+        </div>
+    </div>
+
+    <div class="name-section">
+        <p class="person-name" style="font-family:Bahnschrift; font-style:bold">Kishor Kanara</p>
+        <p class="person-designation" style="font-family:Bahnschrift; font-size:13px;">
+            Employee Code : B-03063
+        </p>
+    </div>
+<div class="emp-extra">Blood Group : B+ | Emergency No: 9724289999</div>
+
+    <div class="details-section">
+              <div style="
+            text-align:center;
+            margin-top:8px;
+            font-size:9px;
+            line-height:1.3;
+        ">
+            <div style="align:center">
+                <img src="BAG-FILMS-LOGO.PNG" width="60px">
+            </div>
+
+            <div style="font-weight:bold;font-family:Bahnschrift;font-size:16px">
+                News24 Broadcast India Ltd
+            </div>
+
+            <div style="font-family:Bahnschrift;font-size:13px">
+                FC-23, Sec-16A,
+                Film City Noida UP-201301
+            </div>
+
+            <div style="font-family:Bahnschrift;font-size:13px">
+                Tel. +91-120-6024724
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card-bottom-press">
+        <span class="press-text-big">
+            PRESS
+        </span>
+    </div>
+
+</div>
+</html>
