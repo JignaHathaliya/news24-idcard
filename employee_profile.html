@@ -14,13 +14,11 @@
   }
 
   /* ── HERO HEADER ── */
-  .hero {
+.hero {
     background: linear-gradient(160deg, #1a3a8c 0%, #0d2260 100%);
-    padding: 40px 20px 30px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
+    padding: 40px 0px 30px;
+    width: 100%;
+    overflow: hidden;}
 
   .hero::before {
     content: 'NEWS 24';
@@ -36,10 +34,13 @@
     letter-spacing: -3px;
   }
 
-.card-top-bar{
-    background:#f5a800;
-    height:51px;
-    position:relative;
+.card-top-bar {
+    background: #f5a800;
+    height: 51px;
+    position: relative;
+    width: 100%;
+    left: 0;
+    right: 0;
 }
 
 .news24-logo-front{
@@ -264,7 +265,7 @@
 
 <!-- HERO -->
 <div class="hero">
- <div style="width:100%; margin-top:-40px; margin-left:0; margin-right:0;">
+<div style="width:100vw; margin-top:-40px; margin-left:-20px; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw;">
 
     <div class="card-top-bar">
         <div class="news24-logo-front">
